@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reservation</title>
+<style>
+body{background:#0b0b0b;color:white;font-family:Georgia;text-align:center;padding:120px}
+input{padding:10px;margin:10px;background:#111;border:1px solid #6b0f1a;color:white}
+button{padding:10px 20px;background:#6b0f1a;border:none;color:white;cursor:pointer}
+</style>
+
+<script>
+const allowedNames=["노루","도마뱀","송골매","염소","조랑말","산양","들소","나비","돌고래","청둥오리","사마귀","표범","늑대","상담사","홍화","해금","초개","청동","고명","수막새","오소리","브라운","무당벌레","들쥐","무당벌레","족제비","화각","박하","포도"]
+
+function checkName(){
+let name=document.getElementById("name").value
+if(allowedNames.includes(name)){
+ document.getElementById("result").innerHTML="예약 승인<br><br>Standard Room : 말단 신체 2%<br>Deluxe Room : 감각 5%<br>Observation Suite : 기억 10%"
+}else{
+ document.getElementById("result").innerHTML="예약 불가"
+}
+}
+</script>
+
+</head>
+
+<body>
+<h1>Reservation Request</h1>
+<p>이름을 입력하십시오</p>
+<input id="name">
+<button onclick="checkName()">확인</button>
+<p id="result"></p>
+</body>
+</html>
+
+

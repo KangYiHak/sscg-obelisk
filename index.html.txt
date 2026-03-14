@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBELISK HOTEL</title>
+<link rel="icon" href="favicon.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#0b0b0b;color:#f2f2f2}
+header{padding:100px 20px;text-align:center;border-bottom:1px solid #1d1d1d;cursor:pointer}
+.logo{width:90px;margin-bottom:18px}
+header h1{font-size:48px;letter-spacing:6px}
+header p{color:#999}
+nav{display:flex;justify-content:center;gap:40px;padding:20px;border-bottom:1px solid #1d1d1d}
+nav a{color:white;text-decoration:none;font-size:13px;letter-spacing:2px}
+nav a:hover{color:#6b0f1a}
+section{max-width:1100px;margin:auto;padding:80px 20px}
+h2{margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.card,.room{background:#121212;border:1px solid #1f1f1f;padding:25px}
+.card:hover{border-color:#6b0f1a}
+.notice{margin-top:20px;color:#aaa;font-size:13px}
+.button{margin-top:30px;padding:10px 18px;border:1px solid #6b0f1a;background:none;color:#6b0f1a;cursor:pointer}
+.button:hover{background:#6b0f1a;color:black}
+.hidden{font-size:10px;color:#2a2a2a;margin-top:40px}
+footer{text-align:center;padding:40px;border-top:1px solid #1d1d1d;color:#888;font-size:12px}
+</style>
+
+<script>
+let clickCount=0
+function secretTrigger(){
+ clickCount++
+ if(clickCount===3){
+  window.location.href="staff.html"
+ }
+}
+function reservation(){
+ window.location.href="reservation.html"
+}
+</script>
+
+</head>
+
+<body>
+
+<header onclick="secretTrigger()">
+<img src="logo.png" class="logo">
+<h1>OBELISK HOTEL</h1>
+<p>Hospitality for Unusual Guests</p>
+</header>
+
+<nav>
+<a href="#about">ABOUT</a>
+<a href="#exhibition">EXHIBITION</a>
+<a href="#rooms">ROOMS</a>
+</nav>
+
+<section id="about">
+<h2>About</h2>
+<p>오벨리스크 호텔은 일반 고객을 위한 숙박 시설이 아닙니다.</p>
+<p class="notice">호텔 이용 시 드레스코드를 반드시 준수하십시오.</p>
+<button class="button" onclick="reservation()">RESERVATION</button>
+</section>
+
+<section id="exhibition">
+<h2>Special Exhibition</h2>
+<div class="grid">
+<div class="card">
+<h3>Exhibition I</h3>
+<p>19–20세기 영국</p>
+</div>
+
+<div class="card">
+<h3>Exhibition II</h3>
+<p>한국풍 전시</p>
+</div>
+
+<div class="card">
+<h3>Exhibition III</h3>
+<p>안개 낀 숲</p>
+</div>
+</div>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Operation Log</title>
+<style>
+body{background:black;color:#ccc;font-family:Georgia;padding:80px}
+</style>
+</head>
+<body>
+
+<h1>HOTEL OPERATION LOG</h1>
+
+<p>log_01 : 신규 손님 증가</p>
+<p>log_02 : 이름 기록 금지 규정 재확인</p>
+<p>log_03 : 일부 손님 형태 불안정</p>
+<p>log_04 : 객실 302 접근 금지</p>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hotel Rules</title>
+<style>
+body{background:black;color:#ddd;font-family:Georgia;padding:80px}
+</style>
+</head>
+<body>
+
+<h1>HOTEL RULES</h1>
+
+<p>1. 본명을 사용하지 마십시오.</p>
+<p>2. 호텔 드레스코드를 준수하십시오.</p>
+<p>3. 직원의 안내를 따르십시오.</p>
+<p>4. 다른 손님의 형태에 대해 질문하지 마십시오.</p>
+<p>5. 일부 방문객은 인간이 아닐 수 있습니다.</p>
+
+</body>
+</html>
+
+

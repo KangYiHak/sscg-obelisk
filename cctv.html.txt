@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Staff Access</title>
+<style>
+body{background:black;color:white;font-family:Georgia;text-align:center;padding:120px}
+a{display:block;margin:20px;color:#6b0f1a}
+</style>
+</head>
+<body>
+
+<h1>STAFF PORTAL</h1>
+
+<a href="cctv.html">CCTV LOG</a>
+<a href="operations.html">OPERATION LOG</a>
+
+</body>
+</html>
+
+
