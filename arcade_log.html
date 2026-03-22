@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARCADE SYSTEM LOG</title>
+
+<style>
+body{
+ background:black;
+ color:#00ff9c;
+ font-family:Courier New;
+ padding:60px;
+ overflow-x:hidden;
+}
+p{margin:6px 0;}
+.warn{color:#ff0033}
+
+/* 네온 타이틀 */
+h1{
+ color:#ff0033;
+ text-shadow:
+ 0 0 5px #ff0033,
+ 0 0 10px #ff0033,
+ 0 0 20px #ff0033;
+}
+
+/* 숨겨진 링크 */
+.secret{
+ position:absolute;
+ bottom:5px;
+ right:5px;
+ color:#000;
+ font-size:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎰 MAGIC BUNNY ARCADE LOG 🐇</h1>
+
+<div id="log"></div>
+
+<!-- 🔎 숨겨진 방송실 링크 -->
+<a href="broadcast.html" class="secret">channel</a>
+
+<script>
+
+/* 로그 출력 함수 */
+let logBox = document.getElementById("log");
+
+function addLog(text, isWarn=false){
+ let p = document.createElement("p");
+ p.innerText = "log_" + Math.floor(Math.random()*100) + " : " + text;
+
+ if(isWarn){
+  p.classList.add("warn");
+ }
+
+ logBox.appendChild(p);
+ window.scrollTo(0, document.body.scrollHeight);
+}
+
+/* 기본 로그 목록 */
+let logs = [
+ "parade active",
+ "music playing",
+ "applause detected",
+ "ride active",
+ "guest movement detected",
+ "signal unstable"
+];
+
+let warnLogs = [
+ "UNREGISTERED ENTRY DETECTED",
+ "ACCESS LOGGED",
+ "count mismatch",
+ "exit route unavailable",
+ "staff access denied"
+];
+
+let bunnyLogs = [
+ "BUNNY : WELCOME :)",
+ "BUNNY : PLAY WITH US",
+ "BUNNY : YOU ARE COUNTED"
+];
+
+/* 시작 로그 */
+addLog("system booting");
+addLog("connection established");
+
+/* 로그 루프 (너무 빠르지 않게 안정) */
+setInterval(()=>{
+
+ let r = Math.random();
+
+ if(r > 0.85){
+  addLog(bunnyLogs[Math.floor(Math.random()*bunnyLogs.length)], true);
+ }
+ else if(r > 0.6){
+  addLog(warnLogs[Math.floor(Math.random()*warnLogs.length)], true);
+ }
+ else{
+  addLog(logs[Math.floor(Math.random()*logs.length)]);
+ }
+
+}, 1500);
+
+/* 참여자 감소 */
+let count = 8;
+
+setInterval(()=>{
+ if(count >= 0){
+  addLog("participant count : " + count, true);
+  count--;
+ }
+}, 4000);
+
+/* 강제 메시지 */
+setTimeout(()=>{
+ addLog("UNREGISTERED USER CONFIRMED", true);
+}, 5000);
+
+setTimeout(()=>{
+ addLog("YOU ARE INCLUDED", true);
+}, 10000);
+
+/* 퍼즐 힌트 (모스부호) */
+setTimeout(()=>{
+ addLog(".--. .-.. . .- ... . / --- .--. . -. / -.-. .... .- -. -. . .-..");
+}, 12000);
+
+</script>
+
+</body>
+</html>
