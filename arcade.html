@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAGIC BUNNY ARCADE</title>
+
+<style>
+body{
+ background:black;
+ color:#ff0033;
+ font-family:Courier New, monospace;
+ text-align:center;
+ overflow:hidden;
+}
+
+/* 깜빡임 */
+.glitch{
+ animation:flicker 0.8s infinite;
+}
+
+@keyframes flicker{
+ 0%{opacity:1}
+ 50%{opacity:0.2}
+ 100%{opacity:1}
+}
+
+/* 흔들림 */
+.shake{
+ animation:shake 0.2s infinite;
+}
+
+@keyframes shake{
+ 0%{transform:translate(0,0)}
+ 25%{transform:translate(1px,-1px)}
+ 50%{transform:translate(-1px,1px)}
+ 75%{transform:translate(1px,1px)}
+}
+
+/* 버튼 */
+button{
+ margin-top:40px;
+ padding:10px 20px;
+ border:1px solid #ff0033;
+ background:none;
+ color:#ff0033;
+ cursor:pointer;
+}
+
+button:hover{
+ background:#ff0033;
+ color:black;
+}
+
+/* 토끼 */
+#bunny{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ width:120px;
+ cursor:pointer;
+}
+
+/* 대사 */
+#dialogue{
+ position:fixed;
+ bottom:160px;
+ right:20px;
+ background:black;
+ border:1px solid #ff0033;
+ padding:10px;
+ width:220px;
+ font-size:12px;
+ color:#ff0033;
+ display:none;
+}
+
+/* 숨김 */
+.hidden{
+ color:#111;
+ font-size:10px;
+ margin-top:40px;
+}
+</style>
+
+<script>
+/* ⚠ 진입 경고 */
+window.onload = function(){
+
+ let ok = confirm(
+"이 구역은 강한 시각 효과 및 불쾌감을 유발할 수 있는 요소를 포함합니다.\n\n계속하시겠습니까?"
+ );
+
+ if(!ok){
+  window.location.href="index.html";
+ }
+}
+
+/* ENTER 버튼 */
+function enterGame(){
+ window.location.href="arcade_log.html";
+}
+
+/* 토끼 대사 */
+let lines = [
+ "WELCOME :)",
+ "PLAY WITH US",
+ "YOU CAME FROM THE HOTEL?",
+ "STAY LONGER",
+ "DON'T TELL THEM",
+ "WE SAW YOU ENTER",
+ "YOU ARE COUNTED",
+ "YOU ARE COUNTED",
+ "YOU ARE COUNTED"
+];
+
+let clickCount = 0;
+
+function bunnyTalk(){
+
+ clickCount++;
+
+ let box = document.getElementById("dialogue");
+ box.style.display = "block";
+
+ if(clickCount == 5){
+  box.innerText = "ACCESS LOGGED";
+ } else {
+  box.innerText = lines[Math.floor(Math.random()*lines.length)];
+ }
+
+}
+
+/* 🎈 풍선 */
+function spawnBalloon(){
+
+ let b = document.createElement("div");
+ b.innerText = "🎈";
+ b.style.position="absolute";
+ b.style.left=Math.random()*90+"%";
+ b.style.top="100%";
+ b.style.fontSize="30px";
+ b.style.cursor="pointer";
+
+ b.onclick=function(){
+  b.innerText="✖";
+
+  let msg=document.createElement("p");
+  msg.innerText="ERROR : GAME NOT FINISHED";
+  msg.style.color="#ff0033";
+  document.body.appendChild(msg);
+ };
+
+ document.body.appendChild(b);
+
+ let move=setInterval(()=>{
+  let top=parseInt(b.style.top);
+  b.style.top=(top-1)+"%";
+
+  if(top<0){
+   clearInterval(move);
+   b.remove();
+  }
+ },30);
+}
+
+setInterval(spawnBalloon,1500);
+
+/* 🎪 퍼레이드 느낌 텍스트 */
+setInterval(()=>{
+ let msg = document.createElement("div");
+ msg.innerText = ["PLAY MORE","STAY LONGER","DON'T STOP"][Math.floor(Math.random()*3)];
+ msg.style.position="absolute";
+ msg.style.left=Math.random()*90+"%";
+ msg.style.top=Math.random()*90+"%";
+ msg.style.color="#ff0033";
+ msg.style.fontSize="12px";
+
+ document.body.appendChild(msg);
+
+ setTimeout(()=>{msg.remove()},2000);
+},800);
+</script>
+
+</head>
+
+<body>
+
+<h1 class="glitch">MAGIC BUNNY ARCADE</h1>
+
+<p class="shake">WELCOME.</p>
+<p>PLAY.</p>
+<p>STAY.</p>
+<p>DO NOT LEAVE.</p>
+
+<button onclick="enterGame()">ENTER</button>
+
+<!-- 🐇 토끼 -->
+<img src="bunny.png" id="bunny" onclick="bunnyTalk()">
+<div id="dialogue"></div>
+
+<!-- 숨겨진 힌트 -->
+<div class="hidden">
+.-- .- -. - / - --- / .-.. . .- ...- .
+</div>
+
+</body>
+</html>
