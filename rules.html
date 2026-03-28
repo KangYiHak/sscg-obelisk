@@ -17,6 +17,31 @@ body{background:black;color:#ddd;font-family:Georgia;padding:80px}
 <p>4. 다른 손님에 대해 질문하지 마십시오.</p>
 <p>5. 객실 외의 공간으로 갈 때에는 직원을 대동하십시오.<p>
 
+<audio id="bgm" loop></audio>
+
+<script>
+const bgm = document.getElementById("bgm");
+
+// 저장된 음악 불러오기
+const savedSrc = localStorage.getItem("bgmSrc");
+const savedTime = localStorage.getItem("bgmTime");
+
+if(savedSrc){
+  bgm.src = savedSrc;
+  bgm.currentTime = savedTime || 0;
+}
+
+// 클릭 시 재생 (모바일 대응)
+document.addEventListener("click", () => {
+  bgm.play().catch(()=>{});
+}, { once: true });
+
+// 재생 위치 계속 저장
+setInterval(() => {
+  localStorage.setItem("bgmTime", bgm.currentTime);
+}, 500);
+</script>
+
 </body>
 </html>
 
